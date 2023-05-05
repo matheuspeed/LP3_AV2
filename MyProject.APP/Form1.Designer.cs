@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            cNome = new DataGridViewTextBoxColumn();
-            cGerente = new DataGridViewTextBoxColumn();
-            cDataInicio = new DataGridViewTextBoxColumn();
-            cDataFim = new DataGridViewTextBoxColumn();
-            cStatus = new DataGridViewTextBoxColumn();
-            cResumo = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
             Gerente = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -49,43 +43,13 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { cNome, cGerente, cDataInicio, cDataFim, cStatus, cResumo });
             dataGridView1.Location = new Point(58, 247);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(645, 172);
+            dataGridView1.Size = new Size(744, 172);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // cNome
-            // 
-            cNome.HeaderText = "Nome";
-            cNome.Name = "cNome";
-            // 
-            // cGerente
-            // 
-            cGerente.HeaderText = "Gerente";
-            cGerente.Name = "cGerente";
-            // 
-            // cDataInicio
-            // 
-            cDataInicio.HeaderText = "Data inicio";
-            cDataInicio.Name = "cDataInicio";
-            // 
-            // cDataFim
-            // 
-            cDataFim.HeaderText = "Data fim";
-            cDataFim.Name = "cDataFim";
-            // 
-            // cStatus
-            // 
-            cStatus.HeaderText = "Status";
-            cStatus.Name = "cStatus";
-            // 
-            // cResumo
-            // 
-            cResumo.HeaderText = "Resumo";
-            cResumo.Name = "cResumo";
             // 
             // Nome
             // 
@@ -141,6 +105,7 @@
             button3.TabIndex = 4;
             button3.Text = "Editar";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -150,12 +115,13 @@
             button4.TabIndex = 5;
             button4.Text = "Excluir";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(803, 525);
+            ClientSize = new Size(952, 552);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(label1);
@@ -172,12 +138,6 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn cNome;
-        private DataGridViewTextBoxColumn cGerente;
-        private DataGridViewTextBoxColumn cDataInicio;
-        private DataGridViewTextBoxColumn cDataFim;
-        private DataGridViewTextBoxColumn cStatus;
-        private DataGridViewTextBoxColumn cResumo;
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Gerente;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -186,5 +146,12 @@
         private Label label1;
         private Button button3;
         private Button button4;
+        private DataGridViewTextBoxColumn cId;
+        private DataGridViewTextBoxColumn cNome;
+        private DataGridViewTextBoxColumn cGerente;
+        private DataGridViewTextBoxColumn cDataInicio;
+        private DataGridViewTextBoxColumn cDataFim;
+        private DataGridViewTextBoxColumn cStatus;
+        private DataGridViewTextBoxColumn cResumo;
     }
 }

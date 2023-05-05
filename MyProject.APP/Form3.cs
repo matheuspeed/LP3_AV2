@@ -9,58 +9,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MyProject.APP
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
-        public Form2()
+
+        private int idRecebido;
+        public Form3(int _idRecebido)
         {
             InitializeComponent();
+            idRecebido = _idRecebido;
+            Projeto j = ProjetoRepository.GetById(idRecebido);
+            textBox1.Text = j.Nome;
+            textBox2.Text = j.Gerente;
+            textBox4.Text = j.Status;
+            textBox3.Text = j.Resumo;
+            monthCalendar1.SelectionStart = (DateTime)j.DataInicio;
+            monthCalendar1.SelectionEnd = (DateTime)j.DataInicio;
+            monthCalendar2.SelectionStart = (DateTime)j.DataFim;
+            monthCalendar2.SelectionEnd = (DateTime)j.DataFim;
         }
 
         private DateTime dataselecionada1;
         private DateTime dataselecionada2;
 
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Projeto j = new Projeto();
+            Projeto j = ProjetoRepository.GetById(idRecebido);
             j.Nome = textBox1.Text;
             j.Gerente = textBox2.Text;
             j.Status = textBox4.Text;
             j.Resumo = textBox3.Text;
             j.DataInicio = dataselecionada1;
             j.DataFim = dataselecionada2;
-            ProjetoRepository.Add(j);
-            MessageBox.Show("Projeto adicionado\nFavor atualizar lista");
+            ProjetoRepository.Update(j);
+            MessageBox.Show("Projeto atualizado\nFavor atualizar lista");
             this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)

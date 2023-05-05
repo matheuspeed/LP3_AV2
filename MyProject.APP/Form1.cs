@@ -12,6 +12,8 @@ namespace MyProject.APP
             InitializeComponent();
         }
 
+        int idCapturado;
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -32,6 +34,63 @@ namespace MyProject.APP
         {
             List<Projeto> list = ProjetoRepository.GetAll();
             dataGridView1.DataSource = list;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow linha = dataGridView1.Rows[e.RowIndex];
+                idCapturado = Convert.ToInt32(linha.Cells[0].Value.ToString());
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (idCapturado != 0)
+            {
+                if (ProjetoRepository.GetById(idCapturado) != null)
+                {
+                    Projeto j = ProjetoRepository.GetById(idCapturado);
+                    Form3 form3 = new Form3(idCapturado);
+                    form3.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum projeto selecionado");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Nenhum projeto selecionado");
+            }
+
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(idCapturado != 0)
+            {
+                if (ProjetoRepository.GetById(idCapturado) != null)
+                {
+                    Projeto j = ProjetoRepository.GetById(idCapturado);
+                    ProjetoRepository.Excluir(j);
+                    MessageBox.Show("Projeto excluído\nFavor atualizar a lista");
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum projeto selecionado");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Nenhum projeto selecionado");
+            }
+
+
         }
     }
 }
